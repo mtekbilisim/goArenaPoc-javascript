@@ -1,7 +1,11 @@
-import React from "react";
+import * as React from "react";
 
-function App() {
-  return <div className='App'></div>;
+export interface IAppProps {}
+
+export default function App(props: IAppProps) {
+  return (
+    <div>
+      <h1>Go Arena</h1>
+    </div>
+  );
 }
-
-export default App;
