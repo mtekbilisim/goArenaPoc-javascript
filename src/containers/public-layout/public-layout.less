@@ -1,0 +1,22 @@
+.public-layout-container {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #002391, #003fa3, #0058b3, #0064b8, #046ab9, #0474be, #0084ca, #0095d5);
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    min-width: 300px;
+    left: -5%;
+    bottom: 0;
+    background-image: url("assets/turkcell-bg-logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0 100%;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.95;
+  }
+}

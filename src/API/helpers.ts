@@ -1,18 +1,12 @@
 import { AxiosResponse, AxiosError } from "axios";
-import { IGlobalServerResponse, IGlobalServerErrorResponse, ErrorCodes } from "./models";
+import { IGlobalServerResponse, IGlobalServerErrorResponse } from "./models";
 
 declare module "axios" {
   interface AxiosResponse<T = any> extends Promise<T> {}
 }
 
 export const GlobalResponseHandler = <T>(response: AxiosResponse<IGlobalServerResponse<T>>) => {
-  const { data, message, isSuccess } = response.data;
-
-  if (!isSuccess) {
-    throw message;
-  }
-
-  console.groupEnd();
+  const { data } = response.data;
   return data;
 };
 

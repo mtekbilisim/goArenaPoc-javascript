@@ -25,11 +25,11 @@ export interface IAuthStoreModel extends IAuthStoreState {
 
 const Auth: IAuthStoreModel = persist(
   {
-    token: undefined,
+    token: undefined || "DEV",
     user: undefined,
     tokenHeaderSet: false,
     //@ts-ignore
-    valid: computed((state) => (!!state.token && !!state.user?.id) || false),
+    valid: computed((state) => (!!state.token && !!state.user?.id) || true),
     request: StoreRequestStatus.IDLE,
     error: null,
     setTokenHeaderSet: action((state, payload) => {

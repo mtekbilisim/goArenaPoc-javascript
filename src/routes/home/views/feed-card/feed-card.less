@@ -1,0 +1,29 @@
+.feed-card {
+  &.ant-card {
+    margin-bottom: 5px;
+    box-shadow: 0px 7px 7px -1px #e4e4e4;
+    border-radius: 4px;
+    // max-width: 320px;
+
+    &-actions {
+      background-color: transparent;
+    }
+  }
+
+  .slick-list {
+    transition-duration: 0.1s;
+  }
+
+  .ant-carousel .slick-dots li {
+    height: 12px;
+    button {
+      height: 12px;
+      border-radius: 4px;
+    }
+    &:not(.slick-active) {
+      button {
+        opacity: 0.5;
+      }
+    }
+  }
+}

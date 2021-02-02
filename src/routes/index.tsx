@@ -1,10 +1,11 @@
-import * as React from "react";
-import { SetAuthCatcher, API } from "API";
+import { SetAuthCatcher } from "API";
 import { AxiosRequestConfig } from "axios";
+import * as React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { HashRouter as Router } from "react-router-dom";
 import { useStoreActions, useStoreState } from "store";
+import { sleep } from "utils";
 import { FlattenPrivateRoutes, FlattenPublicRoutes } from "./routes";
-import { QueryClient, QueryClientProvider } from "react-query";
 
 const PublicContainer = React.lazy(() => import("containers/public-layout"));
 const PrivateContainer = React.lazy(() => import("containers/private-layout"));
@@ -25,11 +26,11 @@ const Routes: React.FunctionComponent<IRoutesProps> = () => {
         req.headers["Authorization"] = `Bearer ${token}`;
         setTokenHeaderSet(true);
         resolve(true);
-        _Client.clear();
       } else {
         delete req.headers["Authorization"];
         setTokenHeaderSet(false);
         resolve(true);
+        _Client.clear();
       }
     });
   }
@@ -60,6 +61,8 @@ const Routes: React.FunctionComponent<IRoutesProps> = () => {
     // return () => {
     //   clearInterval(RefreshToken);
     // };
+
+    setLoading(false);
   }, [token]);
 
   // React.useEffect(() => {

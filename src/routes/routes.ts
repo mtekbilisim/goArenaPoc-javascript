@@ -32,6 +32,12 @@ const PrivateRoutes: IRoutes = [
     component: HomePage,
     exact: true,
   },
+  {
+    path: "/:status",
+    title: "Onay Bekleyen Paylaşımlar",
+    component: HomePage,
+    exact: true,
+  },
 ];
 
 const FlattenPublicRoutes: IRoutes = flattenRoutes(PublicRoutes);

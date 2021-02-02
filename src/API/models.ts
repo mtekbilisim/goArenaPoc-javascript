@@ -1,7 +1,5 @@
 export interface IGlobalServerResponse<T> {
   data: T;
-  isSuccess: boolean;
-  message: string;
 }
 
 export interface IGlobalServerErrorResponse {
