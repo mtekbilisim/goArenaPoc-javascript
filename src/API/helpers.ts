@@ -7,7 +7,12 @@ declare module "axios" {
 
 export const GlobalResponseHandler = <T>(response: AxiosResponse<IGlobalServerResponse<T>>) => {
   const { data } = response.data;
-  return data;
+
+  if (data) {
+    return data;
+  } else {
+    return response.data;
+  }
 };
 
 export const GlobalErrorHandler = async (responseError: AxiosError<IGlobalServerErrorResponse>) => {
@@ -21,6 +26,7 @@ export const GlobalErrorHandler = async (responseError: AxiosError<IGlobalServer
 
     if (responseError.response.status === 401) {
       err = "Oturum süreniz dolmuş, lütfen tekrar giriş yapınız.";
+      localStorage.clear();
     } else {
       err = `Üzgünüz, ${config.url} methodunda hata oluştu.`;
     }

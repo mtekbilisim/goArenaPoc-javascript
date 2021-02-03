@@ -3,6 +3,7 @@ import { render } from "react-snapshot";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.less";
+import "react-virtualized/styles.css";
 
 // import reportWebVitals from "./reportWebVitals";
 

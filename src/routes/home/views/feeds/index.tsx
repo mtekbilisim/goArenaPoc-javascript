@@ -1,16 +1,14 @@
-import { Button } from "antd";
-import Checkbox from "antd/lib/checkbox/Checkbox";
-import { API } from "API";
-import { motion, Variants } from "framer-motion";
-import { Feed, FeedStatus } from "models/feed";
+import { CheckCircleOutlined } from "@ant-design/icons";
+import { Feed } from "models/feed";
 import * as React from "react";
 import Masonry from "react-masonry-css";
-import { array } from "yup";
 import FeedCard from "../feed-card";
 import "./feeds.less";
 
 interface IFeedListProps {
   feeds: Feed[];
+  onSelect: (feeds: Feed[]) => void;
+  clearSelecteds: boolean | undefined | any;
 }
 
 const masonryBreakpoints = {
@@ -24,40 +22,11 @@ const masonryBreakpoints = {
 const FeedList: React.FunctionComponent<IFeedListProps> = (props) => {
   const [selectedFeeds, setSelectedFeeds] = React.useState<number[]>([]);
 
-  const [loading, setloading] = React.useState(true);
-
-  const { feeds } = props;
-
-  React.useEffect(() => {
-    let $wait: NodeJS.Timeout;
-
-    if (feeds.length && loading) {
-      $wait = setTimeout(() => {
-        setloading(false);
-      }, 400);
-    }
-
-    return () => {
-      clearTimeout($wait);
-    };
-  }, [feeds]);
-
-  const send = async () => {
-    const $feeds = feeds
-      .filter((feed) => selectedFeeds.indexOf(feed.id) !== -1)
-      .map((d) => {
-        return { ...d, userId: d.user.id, status: FeedStatus.APPROVED };
-      });
-
-    await API.put("feeds/status", $feeds);
-  };
+  const { feeds, onSelect, clearSelecteds } = props;
 
   const onSelectFeed = React.useCallback(
     (feed: Feed) => {
       const index = selectedFeeds.indexOf(feed.id);
-      console.log("selectedFeeds", selectedFeeds);
-
-      console.log(index);
 
       if (index === -1) {
         setSelectedFeeds((a) => [...a, feed.id]);
@@ -68,19 +37,25 @@ const FeedList: React.FunctionComponent<IFeedListProps> = (props) => {
     [selectedFeeds]
   );
 
+  React.useEffect(() => {
+    setSelectedFeeds([]);
+  }, [clearSelecteds]);
+
+  React.useEffect(() => {
+    onSelect && onSelect(feeds.filter((f) => selectedFeeds.indexOf(f.id) !== -1));
+  }, [selectedFeeds]);
+
   return (
     <div className={`${selectedFeeds && selectedFeeds?.length > 0 ? "show-feed-actions" : null}`}>
-      {selectedFeeds?.join(",")}
-      <Button onClick={send}>Gönder</Button>
       <Masonry breakpointCols={masonryBreakpoints} className='my-masonry-grid' columnClassName='my-masonry-grid_column'>
         {feeds?.map((feed) => (
           <div className={`masonry-feeds-item`} key={feed.id}>
             <FeedCard feed={feed} />
             <div className='feed-card-overlay'>
               <div onClick={() => (selectedFeeds && selectedFeeds?.length > 0 ? onSelectFeed(feed) : {})} className='feed-card-overlay-actions'>
-                <Button onClick={() => onSelectFeed(feed)}>
-                  <Checkbox checked={selectedFeeds.indexOf(feed.id) !== -1} />
-                </Button>
+                <button className='feed-card-overlay-actions-check' onClick={() => onSelectFeed(feed)}>
+                  <CheckCircleOutlined style={{ color: selectedFeeds.indexOf(feed.id) !== -1 ? "#1890ff" : "white", fontSize: 28, transitionDuration: ".1s" }} />
+                </button>
               </div>
             </div>
           </div>

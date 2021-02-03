@@ -3,8 +3,8 @@ import { AxiosRequestConfig } from "axios";
 import * as React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HashRouter as Router } from "react-router-dom";
+import { GetProfile } from "services/authentication";
 import { useStoreActions, useStoreState } from "store";
-import { sleep } from "utils";
 import { FlattenPrivateRoutes, FlattenPublicRoutes } from "./routes";
 
 const PublicContainer = React.lazy(() => import("containers/public-layout"));
@@ -16,7 +16,7 @@ const _Client = new QueryClient();
 
 const Routes: React.FunctionComponent<IRoutesProps> = () => {
   const { valid, token, user } = useStoreState((state) => state.Auth);
-  const { setTokenHeaderSet, setUser, setToken } = useStoreActions((store) => store.Auth);
+  const { setTokenHeaderSet, setUser, logout, setToken } = useStoreActions((store) => store.Auth);
 
   const [loading, setLoading] = React.useState(true);
 
@@ -38,8 +38,13 @@ const Routes: React.FunctionComponent<IRoutesProps> = () => {
   async function GetUserProfile() {
     await SetAuthCatcher(AuthCatch);
     if (!user) {
-      // // const $user = await GetProfile();
-      // setUser($user);
+      try {
+        const $user = await GetProfile();
+        setUser($user);
+      } catch (error) {
+        logout();
+      }
+      setLoading(false);
       // if ($user.locale) {
       //   i18n.changeLanguage($user.locale);
       // }
@@ -61,8 +66,6 @@ const Routes: React.FunctionComponent<IRoutesProps> = () => {
     // return () => {
     //   clearInterval(RefreshToken);
     // };
-
-    setLoading(false);
   }, [token]);
 
   // React.useEffect(() => {

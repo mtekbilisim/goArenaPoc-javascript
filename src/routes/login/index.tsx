@@ -1,22 +1,28 @@
-import { Row, Col, Grid } from "antd";
+import { Row, Col, Grid, Typography } from "antd";
+import { Login as LoginModel } from "models/user";
 import * as React from "react";
+import { NavLink } from "react-router-dom";
+import { useStoreActions, useStoreState } from "store";
 import LoginForm from "./form";
 import "./login.less";
 
 interface ILoginPageProps {}
 
 const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
+  const { login } = useStoreActions((store) => store.Auth);
+
+  const handleLogin = async (form: LoginModel) => {
+    try {
+      await login(form);
+    } catch (error) {
+      console.error("Error on login..", error);
+    }
+  };
+
   return (
-    <Row justify='center' align='middle' className='login-page'>
-      <Col xs={6} sm={8} md={12}></Col>
-      <Col xs={18} sm={16} md={12}>
-        <Row justify='center' align='middle' className='login-page-form'>
-          <Col span={22} flex='0 0 420px' className='login-page-form-inside'>
-            <LoginForm />
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+    <>
+      <LoginForm onSubmit={handleLogin} />
+    </>
   );
 };
 

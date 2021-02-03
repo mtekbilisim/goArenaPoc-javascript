@@ -4,6 +4,8 @@
   display: flex;
   margin-left: -25px; /* gutter size offset */
   width: auto;
+  position: relative;
+  z-index: 0;
 }
 .my-masonry-grid_column {
   padding-left: 25px; /* gutter size */
@@ -18,17 +20,36 @@
 
 .masonry-feeds-item {
   position: relative;
+  &:hover {
+    .feed-card-overlay {
+      &-actions {
+        opacity: 1;
+        &-check {
+          pointer-events: fill;
+          border: none;
+          outline: none;
+          box-shadow: none;
+          &:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 .feed-card-overlay {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: calc(100%);
   left: 0;
   top: 0;
+  pointer-events: none;
 
   &-actions {
-    background: linear-gradient(180deg, rgba(19, 19, 19, 0.2) -20%, rgba(255, 255, 255, 0.1) 80%);
+    background: linear-gradient(180deg, rgba(19, 19, 19, 0.3) -15%, rgba(19, 19, 19, 0.1) 10%, rgba(255, 255, 255, 0.02) 60%);
     width: 100%;
     height: 100%;
     left: 0;
@@ -38,12 +59,29 @@
     pointer-events: none;
     transition-duration: 0.3s;
     will-change: "opacity";
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    &-check {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      transition-duration: 0.1s;
+      filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.185));
+    }
   }
 
   &:hover {
     .feed-card-overlay-actions {
-      pointer-events: fill;
       opacity: 1;
+      &-check {
+        pointer-events: fill;
+        filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.185));
+      }
     }
   }
 }
@@ -56,4 +94,13 @@
       cursor: pointer;
     }
   }
+}
+
+.Cell {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f7f7f7;
+  word-break: break-all;
 }

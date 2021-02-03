@@ -1,10 +1,11 @@
 import { action, thunk, Action, computed, persist, Thunk, Computed } from "easy-peasy";
+import { Login as LoginModel, User } from "models/user";
 import { Login } from "services/authentication";
 import { StoreRequestStatus } from "store/types";
 
 interface IAuthStoreState {
   token: string | undefined;
-  user: object | undefined;
+  user: User | undefined;
   tokenHeaderSet: any;
   request: StoreRequestStatus;
   error: string | null;
@@ -14,22 +15,21 @@ export interface IAuthStoreModel extends IAuthStoreState {
   setTokenHeaderSet: Action<IAuthStoreState, boolean>;
   setRequest: Action<IAuthStoreState, StoreRequestStatus>;
   setError: Action<IAuthStoreState, string>;
-  login: Thunk<IAuthStoreModel, object, string>;
+  login: Thunk<IAuthStoreModel, LoginModel, string>;
   loginSuccess: Action<IAuthStoreState, string>;
   logout: Thunk<IAuthStoreModel>;
   logoutSuccess: Action<IAuthStoreState>;
-  setUser: Action<IAuthStoreState, object>;
+  setUser: Action<IAuthStoreState, User>;
   setToken: Action<IAuthStoreState, string>;
   valid: Computed<IAuthStoreState>;
 }
 
 const Auth: IAuthStoreModel = persist(
   {
-    token: undefined || "DEV",
+    token: undefined,
     user: undefined,
     tokenHeaderSet: false,
-    //@ts-ignore
-    valid: computed((state) => (!!state.token && !!state.user?.id) || true),
+    valid: computed((state) => !!state.token && !!state.user?.id),
     request: StoreRequestStatus.IDLE,
     error: null,
     setTokenHeaderSet: action((state, payload) => {
@@ -49,11 +49,11 @@ const Auth: IAuthStoreModel = persist(
     login: thunk(async (actions, payload, helpers) => {
       actions.setRequest(StoreRequestStatus.PENDING);
       try {
-        //@ts-ignore
-        const { token } = await Login(payload);
-        actions.loginSuccess(token);
+        const data = await Login(payload);
+        console.log("data", data);
+        actions.loginSuccess(data.access_token);
         actions.setRequest(StoreRequestStatus.SUCCESS);
-        return token;
+        return data.access_token;
       } catch (error) {
         console.error("Error while login -> ", error);
         actions.setRequest(StoreRequestStatus.ERROR);

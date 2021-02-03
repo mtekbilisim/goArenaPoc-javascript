@@ -44,3 +44,7 @@ export enum FeedType {
   IMAGE = "IMAGE",
   TEXT = "TEXT",
 }
+
+export interface FeedStatusUpdateRequest extends Feed {
+  userId: number;
+}

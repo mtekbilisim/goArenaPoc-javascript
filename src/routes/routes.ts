@@ -27,14 +27,14 @@ const PublicRoutes: IRoutes = [
 
 const PrivateRoutes: IRoutes = [
   {
-    path: "/",
-    title: "Onay Bekleyen Paylaşımlar",
+    path: "/feeds",
+    title: "Paylaşımlar",
     component: HomePage,
     exact: true,
   },
   {
-    path: "/:status",
-    title: "Onay Bekleyen Paylaşımlar",
+    path: "/feeds/:status",
+    title: "Paylaşımlar",
     component: HomePage,
     exact: true,
   },

@@ -42,7 +42,11 @@ interface IRenderMediaProps {
 }
 
 const RenderMedia: React.FunctionComponent<IRenderMediaProps> = React.memo(({ media, type, ...props }) =>
-  type === FeedType.IMAGE || (media.uri && media.mimeType.includes("image")) ? <FeedImageMedia src={media.uri} /> : type === FeedType.VIDEO || (media.uri && media.mimeType.includes("video")) ? <FeedVideoMedia src={media.uri} /> : null
+  type === FeedType.IMAGE || (media.uri && media.mimeType.includes("image")) ? (
+    <FeedImageMedia placeholder={<div style={{ minHeight: 140 }}></div>} src={media.uri} />
+  ) : type === FeedType.VIDEO || (media.uri && media.mimeType.includes("video")) ? (
+    <FeedVideoMedia src={media.uri} />
+  ) : null
 );
 
 export default FeedCardMedia;
