@@ -26,6 +26,12 @@ Daha fazla detay için [deployment](https://facebook.github.io/create-react-app/
 
 Sunucuda [Docker](https://www.docker.com/) kullanımına hazır, konfigüre edilebilir `Dockerfile` dosyası
 
+## API
+
+### Uygulamanın beslendiği API projecsini [buradan](https://github.com/mtekbilisim/goArenaPoc-backend) görebilirsini.
+`.env` dosyları içinde `REACT_APP_API_BASE_URL` ile bağlanır. Geliştirici modunda `(.env.dev)` API url servisi `package.json` içinde `proxy` alanından beslenir.
+Uygulamanın canlı versiyonu için `.env.production` dosyasındaki `REACT_APP_API_BASE_URL` değişkenindeki adresi kullanır.
+
 ## Kullanılmış Kütüphaneler
 
 - [Create React App](https://create-react-app.dev)
