@@ -24,7 +24,7 @@ Daha fazla detay için [deployment](https://facebook.github.io/create-react-app/
 
 ### `Dockerfile` ile çalışma
 
-Sunucuda [Docker](https://www.docker.com/) kullımına hazır, konfigüre edilebilir `Dockerfile` dosyası
+Sunucuda [Docker](https://www.docker.com/) kullanımına hazır, konfigüre edilebilir `Dockerfile` dosyası
 
 ## Kullanılmış Kütüphaneler
 
