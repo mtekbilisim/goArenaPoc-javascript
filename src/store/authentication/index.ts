@@ -50,7 +50,6 @@ const Auth: IAuthStoreModel = persist(
       actions.setRequest(StoreRequestStatus.PENDING);
       try {
         const data = await Login(payload);
-        console.log("data", data);
         actions.loginSuccess(data.access_token);
         actions.setRequest(StoreRequestStatus.SUCCESS);
         return data.access_token;

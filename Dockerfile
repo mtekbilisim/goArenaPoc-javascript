@@ -1,19 +1,23 @@
-# pull official base image
-FROM node:13.12.0-alpine
+# Step 1
+FROM node:13.12.0-alpine as build-step
+#FROM node:13.12.0-alpine
 
-# set working directory
-WORKDIR /
+RUN mkdir /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /node_modules/.bin:$PATH
+WORKDIR /app
 
-# install app dependencies
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install --silent
+COPY package.json /app
 
-# add app
-COPY . ./
+RUN npm install
 
-# start app
-CMD ["npm", "start"]
+COPY . /app
+
+RUN npm run build
+
+ 
+
+# Stage 2
+
+FROM nginx:1.17.1-alpine
+
+COPY --from=build-step /app/build /usr/share/nginx/html

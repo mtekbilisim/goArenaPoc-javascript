@@ -1,5 +1,6 @@
 import { SetAuthCatcher } from "API";
 import { AxiosRequestConfig } from "axios";
+import Logo from "containers/public-layout/logo";
 import * as React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HashRouter as Router } from "react-router-dom";
@@ -82,7 +83,9 @@ const Routes: React.FunctionComponent<IRoutesProps> = () => {
               <PrivateContainer routes={FlattenPrivateRoutes} />
             </QueryClientProvider>
           ) : (
-            <div>Yükleniyor..</div>
+            <div style={{ position: "fixed", left: 0, top: 0, width: "100vw", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <Logo width={250} height={180} />
+            </div>
           )
         ) : (
           <PublicContainer routes={FlattenPublicRoutes} />

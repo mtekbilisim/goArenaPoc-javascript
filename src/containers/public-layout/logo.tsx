@@ -1,10 +1,10 @@
 import * as React from "react";
 
-interface ILogoProps {}
+interface ILogoProps extends React.SVGProps<SVGSVGElement> {}
 
 const Logo: React.FunctionComponent<ILogoProps> = (props) => {
   return (
-    <svg width='104' height='69' viewBox='0 0 104 69' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <svg width='140' height='80' viewBox='0 0 104 69' fill='none' xmlns='http://www.w3.org/2000/svg' {...props}>
       <path
         d='M74.1077 0C60.8077 0 49.6077 8.8 45.9077 20.9H58.1077C61.1077 15.2 67.1077 11.3 74.1077 11.3C84.1077 11.3 92.2076 19.4 92.2076 29.4C92.2076 39.4 84.1077 47.5 74.1077 47.5C67.9076 47.5 62.4077 44.4 59.2077 39.6V54.7C63.3077 57.2 68.1077 58.6 73.3077 58.8V68.7C88.5077 61.3 94.7076 52.6 97.2076 47.6C101.108 42.6 103.508 36.3 103.508 29.4C103.408 13.2 90.3077 0 74.1077 0Z'
         fill='#059FE7'

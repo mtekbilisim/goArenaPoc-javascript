@@ -87,7 +87,10 @@ const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
       </Col>
       <Col span={24}>
         {/* <AnimatePresence key={params.status} exitBeforeEnter={true}> */}
-        <Spin spinning={isLoading || loading}> {filtered && filtered.length ? <FeedList feeds={filtered} onSelect={setSelectedFeeds} clearSelecteds={loading || isLoading || params.status} /> : <Empty />}</Spin>
+        <Spin tip='Paylaşılanlar yükleniyor..' spinning={isLoading || loading}>
+          {" "}
+          {filtered && filtered.length ? <FeedList feeds={filtered} onSelect={setSelectedFeeds} clearSelecteds={loading || isLoading || params.status} /> : isLoading ? <div /> : <Empty />}
+        </Spin>
         {/* </AnimatePresence> */}
       </Col>
     </Row>

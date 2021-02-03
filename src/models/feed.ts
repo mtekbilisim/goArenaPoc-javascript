@@ -8,6 +8,7 @@ export interface Feed {
   medias: Media[];
   user: FeedUser;
   status: FeedStatus;
+  tags: null | [];
 }
 
 export interface Media {

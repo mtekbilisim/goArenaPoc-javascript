@@ -19,8 +19,6 @@ export const GlobalErrorHandler = async (responseError: AxiosError<IGlobalServer
   console.error("Global API error handler->", responseError.response);
   let err = null;
 
-  console.log("Error ->", responseError.response?.status);
-
   if (responseError.response && responseError.response.data) {
     const { data, config } = responseError.response;
 
@@ -42,7 +40,7 @@ export const GlobalErrorHandler = async (responseError: AxiosError<IGlobalServer
     }
 
     if (process.env.NODE_ENV === "development") {
-      console.log("");
+      console.log("Working on Development mod");
     }
 
     console.error(err);

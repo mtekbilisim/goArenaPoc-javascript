@@ -1,4 +1,4 @@
-import { Card } from "antd";
+import { Card, Col, Row, Tag } from "antd";
 import Avatar from "antd/lib/avatar/avatar";
 import { API } from "API";
 import { Feed, FeedStatus, FeedStatusUpdateRequest } from "models/feed";
@@ -49,7 +49,16 @@ const FeedCard: React.FunctionComponent<IFeedCardProps> = (props) => {
 
   return (
     <Card actions={Actions} className={`feed-card ${loading ? "loading" : "idle"}`} cover={<FeedCardMedia type={feed.postType} medias={feed.medias} />}>
-      <Card.Meta avatar={<Avatar src={feed.user.avatar}>{feed.user.username}</Avatar>} title={feed.user.username} description={feed.title}></Card.Meta>
+      <Row gutter={[2, 8]}>
+        {feed.tags?.length
+          ? feed.tags.map((tag) => (
+              <Col>
+                <Tag color='blue'>{tag}</Tag>
+              </Col>
+            ))
+          : null}
+      </Row>
+      <Card.Meta avatar={<Avatar src={feed.user.avatar}>{feed.user.username}</Avatar>} title={feed.user.username} description={<div>{feed.title}</div>}></Card.Meta>
     </Card>
   );
 };
