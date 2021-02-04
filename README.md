@@ -117,7 +117,7 @@ Katılım projenin bir POC olması sebebi ile **kapatılmıştır**. Ancak proje
 ## [Lisans](#lisans)
 
 MIT lisansı altında dağıtılmaktadır.</br>
-[![MIT License][license-shield]][license-url]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 <!-- CONTACT -->
