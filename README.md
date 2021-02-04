@@ -21,29 +21,29 @@
   <summary>İçerik</summary>
   <ol>
     <li>
-      <a href="#about-the-project">Proje hakkında</a>
+      <a href="#proje-hakkında">Proje hakkında</a>
       <ul>
-        <li><a href="#built-with">Mimari hakkında</a></li>
+        <li><a href="#mimari-hakkında">Mimari hakkında</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Başlangıç</a>
+      <a href="#başlangıç">Başlangıç</a>
       <ul>
-        <li><a href="#installation">Kurulum</a></li>
+        <li><a href="#kurulum">Kurulum</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Katılım</a></li>
-    <li><a href="#license">Lisans</a></li>
-    <li><a href="#contact">İletişim</a></li>
+    <li><a href="#katılım">Katılım</a></li>
+    <li><a href="#lisans">Lisans</a></li>
+    <li><a href="#iletğşim">İletişim</a></li>
   </ol>
 </details>
 
 
-## [Proje Hakkında](#about-the-project)
+## [Proje Hakkında](#proje-hakkında)
 
 Bu proejci Go Areana Mobil uygulamalarda kullanıcıların paylaşımlarını yetkili bir kullanıcı ile görerek paylaşılan gönderileri onaylama veya paylaşılan gönderileri kaldırılabilmesi hedeflenmişir.
 
-### [Mimari Hakkında](#built-with)
+### [Mimari Hakkında](#mimari-hakkında)
 
 [Create React App](https://github.com/facebook/create-react-app) temel alarak, özelleştirilebilir ve genişletilebilir konfigurasyon ayalarını yapılandırılabilir şekilde planlanmıştır.
 
@@ -59,13 +59,13 @@ Bu proejci Go Areana Mobil uygulamalarda kullanıcıların paylaşımlarını ye
 - [react-app-rewired](https://github.com/timarney/react-app-rewired)
 - [webpack](https://webpack.js.org)
 
-## [Başlangıç](#getting-started)
+## [Başlangıç](#başlangıç)
 
 ### Gereksinimler
 
 `NodeJS (>10)`
 
-### [Kurulum](#installation)
+### [Kurulum](#kurulum)
 
 Uygulamayı kendi tarafınızda çalıştırmak için aşağıdaki adımları izleyin.
 
@@ -107,3 +107,23 @@ Sunucuda [Docker](https://www.docker.com/) kullanımına hazır, konfigüre edil
 Uygulamanın canlı versiyonu için `.env.production` dosyasındaki `REACT_APP_API_BASE_URL` değişkenindeki adres kullanılır.
 
 
+
+<!-- CONTRIBUTING -->
+## [Katılım](#katılım)
+
+Katılım projenin bir POC olması sebebi ile **kapatılmıştır**. Ancak projemizi beğendiyseniz paylaşıma açığız. Bu sebeple MIT lisansını tercih ettik.</br>
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+<!-- LICENSE -->
+## [Lisans](#lisans)
+
+MIT lisansı altında dağıtılmaktadır.</br>
+[![MIT License][license-shield]][license-url]
+
+
+<!-- CONTACT -->
+## [İletişim](#iletişim)
+
+Emrah TOY - [@emrahtoy](https://instagram.com/emrahtoy) - emrah.toy@mtekbilisim.com
+
+Proje linki : [https://github.com/mtekbilisim/goArenaPoc-javascript](https://github.com/mtekbilisim/goArenaPoc-javascript)
