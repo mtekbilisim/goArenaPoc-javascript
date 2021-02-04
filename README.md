@@ -8,7 +8,7 @@
 <h3 align="center">Turkcell GoArena POC</h3>
 
   <p align="center">
-    Android Native Application /  Navigation Architecture Component
+    Go Arena Web Admin Panel - Single Page Application
     <br />
     <a href="http://www.mtekbilisim.com"><strong>MTek Bilişim A.Ş. »</strong></a>
     <br />
