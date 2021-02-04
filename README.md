@@ -112,7 +112,6 @@ Uygulamanın canlı versiyonu için `.env.production` dosyasındaki `REACT_APP_A
 ## [Katılım](#katılım)
 
 Katılım projenin bir POC olması sebebi ile **kapatılmıştır**. Ancak projemizi beğendiyseniz paylaşıma açığız. Bu sebeple MIT lisansını tercih ettik.</br>
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- LICENSE -->
 ## [Lisans](#lisans)
@@ -124,6 +123,6 @@ MIT lisansı altında dağıtılmaktadır.</br>
 <!-- CONTACT -->
 ## [İletişim](#iletişim)
 
-Emrah TOY - [@emrahtoy](https://instagram.com/emrahtoy) - emrah.toy@mtekbilisim.com
+Fatih Pişkin - [linkedin.com/in/pknfatih](https://www.linkedin.com/in/pknfatih/) - fatih.piskin@mtekbilisim.com
 
 Proje linki : [https://github.com/mtekbilisim/goArenaPoc-javascript](https://github.com/mtekbilisim/goArenaPoc-javascript)
