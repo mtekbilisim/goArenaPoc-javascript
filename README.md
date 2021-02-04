@@ -94,13 +94,13 @@ Otomatik optimizasyon ve sıkıştırma yaparak temiz , kullanıma hazır uygula
 
 Daha fazla detay için [deployment](https://facebook.github.io/create-react-app/docs/deployment) ziyaret edebilirsiniz.
 
-## Docker
+### Docker
 
 ### `Dockerfile` ile çalışma
 
 Sunucuda [Docker](https://www.docker.com/) kullanımına hazır, konfigüre edilebilir `Dockerfile` dosyası
 
-## API
+### API
 
 ### Uygulamanın beslendiği API projecsini [buradan](https://github.com/mtekbilisim/goArenaPoc-backend) görebilirsini.
 `.env` dosyları içinde `REACT_APP_API_BASE_URL` ile bağlanır. Geliştirici modunda `(.env.dev)` API url servisi `package.json` içinde `proxy` alanından beslenir.
